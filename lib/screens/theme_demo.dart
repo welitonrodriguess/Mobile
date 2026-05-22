@@ -1,3 +1,4 @@
+import 'package:dev_venture/components/text_field.dart';
 import 'package:dev_venture/components/venture_timer.dart';
 import 'package:flutter/material.dart';
 
@@ -9,6 +10,7 @@ class ThemeDemoPage extends StatefulWidget {
 }
 
 class _ThemeDemoPageState extends State<ThemeDemoPage> {
+  final _customTextFieldController = TextEditingController();
   bool _switchValue = true;
   bool _checkboxValue = false;
   int _radioValue = 0;
@@ -19,6 +21,10 @@ class _ThemeDemoPageState extends State<ThemeDemoPage> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
+    void _handleOnFormSubmit() {
+      print("Valor do Textfield custom: ${_customTextFieldController.text}");
+    }
 
     return Scaffold(
       appBar: AppBar(title: const Text('Theme components demo')),
@@ -48,7 +54,7 @@ class _ThemeDemoPageState extends State<ThemeDemoPage> {
               Row(
                 children: [
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: _handleOnFormSubmit,
                     child: const Text('Elevated'),
                   ),
                   SizedBox(width: 8),
@@ -89,9 +95,13 @@ class _ThemeDemoPageState extends State<ThemeDemoPage> {
                   hintText: 'Placeholder',
                 ),
               ),
-
               SizedBox(height: 12),
-
+              CustomTextField(
+                hintText: "Custom Text Field",
+                labelText: "Custom Header",
+                controller: _customTextFieldController,
+              ),
+              SizedBox(height: 12),
               //Exemplo de uso de componente próprio
               VentureTimer(
                 initialSeconds: 20,
