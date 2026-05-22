@@ -12,6 +12,7 @@ class multiSelection extends StatefulWidget {
 
   @override
   State<multiSelection> createState()=>_MultiSelectionState();
+  
 }
 class _MultiSelectionState extends State<multiSelection>{
   final List<String> selecionados=[];
