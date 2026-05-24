@@ -24,6 +24,7 @@ class _TrueFalseDemoPageState extends State<TrueFalseDemoPage> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    const contentPadding = 16.0;
 
     return Scaffold(
       appBar: AppBar(
@@ -36,10 +37,10 @@ class _TrueFalseDemoPageState extends State<TrueFalseDemoPage> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Padding(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(contentPadding),
                 child: Card(
                   child: Padding(
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(contentPadding),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
