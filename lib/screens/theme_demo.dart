@@ -1,3 +1,5 @@
+import 'package:dev_venture/components/drag_drop/draggable_block.dart';
+import 'package:dev_venture/components/drag_drop/drop_target_zone.dart';
 import 'package:dev_venture/components/input_text.dart';
 import 'package:dev_venture/components/multi_selection.dart';
 import 'package:dev_venture/components/text_field.dart';
@@ -162,6 +164,18 @@ class _ThemeDemoPageState extends State<ThemeDemoPage> {
                   "Item 9",
                 ],
                 onChange: _handleOnMultiSelectChange,
+              ),
+
+              DraggableBlock(
+                label: "Bloco de Teste 1",
+                color: Color(0xFF6200EE),
+              ),
+              DropTargetZone(
+                onAccept: (data) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Você soltou o: $data')),
+                  );
+                },
               ),
 
               SwitchListTile(
