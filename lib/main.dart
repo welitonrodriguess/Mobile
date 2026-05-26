@@ -1,7 +1,10 @@
+import 'package:flutter/material.dart';
+
 import 'package:dev_venture/theme/dark_theme.dart';
 import 'package:dev_venture/theme/light_theme.dart';
+
 import 'package:dev_venture/screens/theme_demo.dart';
-import 'package:flutter/material.dart';
+import 'package:dev_venture/screens/activities_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,15 +13,23 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Dev Venture',
+
       theme: AppLightTheme.theme,
       darkTheme: AppDarkTheme.theme,
       themeMode: ThemeMode.system,
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+
+      // TELA INICIAL
+      home: const MyHomePage(title: 'Dev Venture'),
+
+      // ROTAS
+      routes: {
+        '/activities': (context) => ActivitiesScreen(),
+        '/theme-demo': (context) => const ThemeDemoPage(),
+      },
     );
   }
 }
@@ -33,48 +44,51 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+
         title: Text(widget.title),
+
         actions: [
           IconButton(
             tooltip: 'Open theme demo',
+
             icon: const Icon(Icons.palette),
+
             onPressed: () {
-              Navigator.of(
-                context,
-              ).push(MaterialPageRoute(builder: (_) => const ThemeDemoPage()));
+              Navigator.pushNamed(context, '/theme-demo');
             },
           ),
         ],
       ),
+
       body: Center(
         child: Column(
-          mainAxisAlignment: .center,
+          mainAxisAlignment: MainAxisAlignment.center,
+
           children: [
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+
+            const Text(
+              'Tela inicial do projeto',
+            ),
+
+            const SizedBox(height: 20),
+
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/activities');
+              },
+
+              child: const Text(
+                'Abrir Lista de Atividades',
+              ),
             ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
       ),
     );
   }
