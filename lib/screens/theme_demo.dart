@@ -1,4 +1,5 @@
 import 'package:dev_venture/components/input_text.dart';
+import 'package:dev_venture/components/multi_selection.dart';
 import 'package:dev_venture/components/text_field.dart';
 import 'package:dev_venture/components/venture_timer.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,12 @@ class _ThemeDemoPageState extends State<ThemeDemoPage> {
     if (_formKey.currentState!.validate()) {
       print("Valor do Textfield custom: ${_customTextFieldController.text}");
       print("Valor do inputText custom: ${_customInputTextController.text}");
+    }
+  }
+
+  void _handleOnMultiSelectChange(List<String> selections) {
+    for (String str in selections) {
+      print("Selected: $str");
     }
   }
 
@@ -142,6 +149,21 @@ class _ThemeDemoPageState extends State<ThemeDemoPage> {
                 ),
               ),
               SizedBox(height: 12),
+              MultiSelection(
+                labels: [
+                  "Item 1",
+                  "Item 2",
+                  "Item 3",
+                  "Item 4",
+                  "Item 5",
+                  "Item 6",
+                  "Item 7",
+                  "Item 8",
+                  "Item 9",
+                ],
+                onChange: _handleOnMultiSelectChange,
+              ),
+
               SwitchListTile(
                 title: const Text('Switch'),
                 value: _switchValue,
