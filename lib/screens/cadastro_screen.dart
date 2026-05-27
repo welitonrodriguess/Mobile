@@ -137,6 +137,13 @@ class CadastroScreen extends StatelessWidget {
                   text: 'Cadastrar',
                   icon: Icons.arrow_forward,
                   onPressed: () {
+                    Navigator.pushNamed(context, '/home');
+                  },
+                ),
+                ButtonComponent(
+                  text: 'Atividades',
+                  icon: Icons.arrow_forward,
+                  onPressed: () {
                     Navigator.pushNamed(context, '/activities');
                   },
                 ),

@@ -1,3 +1,4 @@
+import 'package:dev_venture/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:dev_venture/theme/dark_theme.dart';
 import 'package:dev_venture/theme/light_theme.dart';
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
 
       // ROTAS
       routes: {
+        '/home': (context) => const HomeScreen(),
         '/activities': (context) => ActivitiesScreen(),
         '/theme-demo': (context) => const ThemeDemoPage(),
       },
