@@ -166,7 +166,10 @@ class _ThemeDemoPageState extends State<ThemeDemoPage> {
                 ],
                 onChange: _handleOnMultiSelectChange,
               ),
-              SingleSelection(),
+              SelectionUnica(
+                options: ["opcção 1", "opcção 2", "opcção 3"],
+                onChanged: (value) {},
+              ),
 
               DraggableBlock(
                 label: "Bloco de Teste 1",
