@@ -1,4 +1,8 @@
+import 'package:dev_venture/components/drag_drop/draggable_block.dart';
+import 'package:dev_venture/components/drag_drop/drop_target_zone.dart';
 import 'package:dev_venture/components/input_text.dart';
+import 'package:dev_venture/components/multi_selection.dart';
+import 'package:dev_venture/components/selection_unica.dart';
 import 'package:dev_venture/components/text_field.dart';
 import 'package:dev_venture/components/venture_timer.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +23,12 @@ class _ThemeDemoPageState extends State<ThemeDemoPage> {
     if (_formKey.currentState!.validate()) {
       print("Valor do Textfield custom: ${_customTextFieldController.text}");
       print("Valor do inputText custom: ${_customInputTextController.text}");
+    }
+  }
+
+  void _handleOnMultiSelectChange(List<String> selections) {
+    for (String str in selections) {
+      print("Selected: $str");
     }
   }
 
@@ -142,6 +152,37 @@ class _ThemeDemoPageState extends State<ThemeDemoPage> {
                 ),
               ),
               SizedBox(height: 12),
+              MultiSelection(
+                labels: [
+                  "Item 1",
+                  "Item 2",
+                  "Item 3",
+                  "Item 4",
+                  "Item 5",
+                  "Item 6",
+                  "Item 7",
+                  "Item 8",
+                  "Item 9",
+                ],
+                onChange: _handleOnMultiSelectChange,
+              ),
+              SelectionUnica(
+                options: ["opcção 1", "opcção 2", "opcção 3"],
+                onChanged: (value) {},
+              ),
+
+              DraggableBlock(
+                label: "Bloco de Teste 1",
+                color: Color(0xFF6200EE),
+              ),
+              DropTargetZone(
+                onAccept: (data) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Você soltou o: $data')),
+                  );
+                },
+              ),
+
               SwitchListTile(
                 title: const Text('Switch'),
                 value: _switchValue,

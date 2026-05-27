@@ -1,7 +1,5 @@
-import 'package:dev_venture/components/button_component.dart';
 import 'package:dev_venture/theme/dark_theme.dart';
 import 'package:dev_venture/theme/light_theme.dart';
-import 'package:dev_venture/screens/theme_demo.dart';
 import 'package:flutter/material.dart';
 import 'package:dev_venture/screens/cadastro_screen.dart';
 
@@ -16,7 +14,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      theme: AppLightTheme.theme,
+      darkTheme: AppDarkTheme.theme,
+      themeMode: ThemeMode.system,
       home: const CadastroScreen(),
     );
   }
