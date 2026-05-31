@@ -1,17 +1,40 @@
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  final VoidCallback onThemeChanged;
+  final ThemeMode themeMode;
+
+  const HomeScreen({
+    super.key,
+    required this.onThemeChanged,
+    required this.themeMode,
+  });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
+    IconData iconTheme;
+    if (themeMode == ThemeMode.system) {
+      iconTheme = Icons.brightness_auto;
+    } else if (themeMode == ThemeMode.light) {
+      iconTheme = Icons.wb_sunny;
+    } else {
+      iconTheme = Icons.nightlight_round;
+    }
 
     return Scaffold(
       appBar: AppBar(
         title: Text("Dev Venture"),
         backgroundColor: theme.colorScheme.primary,
         foregroundColor: theme.colorScheme.onPrimary,
+        actions: [
+          IconButton(
+            icon: Icon(iconTheme),
+            tooltip: 'Tema: ${themeMode.name}',
+            onPressed: onThemeChanged,
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
